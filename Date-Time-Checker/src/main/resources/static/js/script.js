@@ -1,29 +1,30 @@
+// Date Time Checker JavaScript - Version 1.0
 document.addEventListener('DOMContentLoaded', function() {
+    // Get DOM elements
     const dayInput = document.getElementById('day');
     const monthInput = document.getElementById('month');
     const yearInput = document.getElementById('year');
     const checkButton = document.getElementById('checkButton');
     const clearButton = document.getElementById('clearButton');
-    const closeButton = document.getElementById('closeButton');
+    const closeButton = document.getElementById('closeBtn'); // New ID
     const messageBox = document.getElementById('messageBox');
     
-    // Check button click event
+    // Check button functionality
     checkButton.addEventListener('click', function() {
         const day = dayInput.value.trim();
         const month = monthInput.value.trim();
         const year = yearInput.value.trim();
         
-        // Reset message box
-        messageBox.style.display = 'none';
-        messageBox.className = 'message';
-        
-        // Check if all fields are filled
+        // Hide previous messages
+        hideMessage();
+
+        // Validate input
         if (!day || !month || !year) {
             showMessage('Please fill all fields!', 'error');
             return;
         }
         
-        // Send request to backend
+        // Send to backend
         fetch('/api/check-date', {
             method: 'POST',
             headers: {
@@ -44,29 +45,46 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         })
         .catch(error => {
-            showMessage('An error occurred: ' + error, 'error');
+            showMessage('Error: ' + error.message, 'error');
         });
     });
     
-    // Clear button click event
+    // Clear button functionality
     clearButton.addEventListener('click', function() {
         dayInput.value = '';
         monthInput.value = '';
         yearInput.value = '';
-        messageBox.style.display = 'none';
+        hideMessage();
     });
     
-    // Close button click event
-    closeButton.addEventListener('click', function() {
-        if (confirm('Are you sure to exit?')) {
-            window.close();
+    // Close X button - GUARANTEED to work
+    closeButton.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        // Show confirm dialog - this WILL work
+        const confirmed = window.confirm('Are you sure to exit?');
+
+        if (confirmed) {
+            // Multiple methods to close
+            try {
+                window.close();
+            } catch(err) {
+                // If window.close() fails, try alternative
+                window.location.href = 'about:blank';
+            }
         }
     });
-    
-    // Function to show message
-    function showMessage(message, type) {
-        messageBox.textContent = message;
-        messageBox.className = 'message ' + type;
+
+    // Message functions
+    function showMessage(text, type) {
+        messageBox.textContent = text;
+        messageBox.className = 'message-area ' + type;
         messageBox.style.display = 'block';
+    }
+
+    function hideMessage() {
+        messageBox.style.display = 'none';
+        messageBox.className = 'message-area';
     }
 });

@@ -4,40 +4,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Date Time Checker</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/style.css?v=1.0">
 </head>
-<body>    <div class="container">
-        <div class="header">
-            <img src="/images/FPT_logo_2010.svg.png" alt="FPT Logo" class="logo">
-            <h1 class="title">Date Time Checker</h1>
+<body>
+    <div class="form-container">
+        <!-- X Button placed FIRST for proper positioning -->
+        <button id="closeBtn" class="close-btn">×</button>
+
+        <div class="form-content">
+            <div class="header-section">
+                <img src="/images/FPT_logo_2010.svg.png" alt="FPT Logo" class="logo-img">
+                <h1 class="app-title">Date Time Checker</h1>
+            </div>
+
+            <div class="input-section">
+                <div class="input-group">
+                    <label for="day">Day</label>
+                    <input type="text" id="day" name="day" placeholder="Enter day">
+                </div>
+
+                <div class="input-group">
+                    <label for="month">Month</label>
+                    <input type="text" id="month" name="month" placeholder="Enter month">
+                </div>
+
+                <div class="input-group">
+                    <label for="year">Year</label>
+                    <input type="text" id="year" name="year" placeholder="Enter year">
+                </div>
+
+                <div class="button-group">
+                    <button type="button" class="btn-check" id="checkButton">Check</button>
+                    <button type="button" class="btn-clear" id="clearButton">Clear</button>
+                </div>
+            </div>
+
+            <div id="messageBox" class="message-area"></div>
         </div>
-        
-        <div class="form">
-            <div class="form-group">
-                <label for="day">Day</label>
-                <input type="text" id="day" name="day" placeholder="Enter day">
-            </div>
-            
-            <div class="form-group">
-                <label for="month">Month</label>
-                <input type="text" id="month" name="month" placeholder="Enter month">
-            </div>
-            
-            <div class="form-group">
-                <label for="year">Year</label>
-                <input type="text" id="year" name="year" placeholder="Enter year">
-            </div>
-            
-            <div class="buttons">
-                <button class="check" id="checkButton">Check</button>
-                <button class="clear" id="clearButton">Clear</button>
-                <button class="close" id="closeButton">Close</button>
-            </div>
-        </div>
-        
-        <div id="messageBox" class="message"></div>
     </div>
     
-    <script src="/js/script.js"></script>
+    <script src="/js/script.js?v=1.0"></script>
 </body>
 </html>

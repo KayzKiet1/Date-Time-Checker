@@ -44,8 +44,8 @@ public class DateTimeService {
             return new DateTimeResponse(false, "Input data for Month is out of range!");
         }
         
-        // Check year range (1000-9999)
-        if (yearValue < 1000 || yearValue > 9999) {
+        // Check year range (1000-3000)
+        if (yearValue < 1000 || yearValue > 3000) {
             return new DateTimeResponse(false, "Input data for Year is out of range!");
         }
         

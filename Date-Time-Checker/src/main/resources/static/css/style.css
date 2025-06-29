@@ -1,101 +1,191 @@
-body {
-    font-family: Arial, sans-serif;
+/* Reset và Base Styles */
+* {
     margin: 0;
-    padding: 20px;
-    background-color: #f4f4f4;
-}
-
-.container {
-    max-width: 600px;
-    margin: 0 auto;
-    background-color: white;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.header {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-.logo {
-    width: 100px;
-    height: auto;
-    margin-right: 20px;
-}
-
-.title {
-    color: blue;
-    font-family: Arial, sans-serif;
-    font-size: 26px;
-}
-
-.form-group {
-    margin-bottom: 15px;
-}
-
-label {
-    display: block;
-    text-align: left;
-    margin-bottom: 5px;
-    font-weight: bold;
-}
-
-input[type="text"] {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+    padding: 0;
     box-sizing: border-box;
 }
 
-.buttons {
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
     display: flex;
-    justify-content: flex-start;
-    gap: 10px;
-    margin-top: 20px;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
 }
 
-button {
-    padding: 10px 20px;
+/* Container chính - kích thước vừa phải */
+.form-container {
+    position: relative;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 25px;
+    width: 100%;
+    max-width: 450px; /* Kích thước vừa phải, không quá to */
+}
+
+/* Button X màu đỏ ở góc phải */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 28px;
+    height: 28px;
+    background-color: #FF0000; /* Màu đỏ rõ ràng */
+    color: white;
     border: none;
-    border-radius: 4px;
-    cursor: pointer;
+    border-radius: 50%;
+    font-size: 18px;
     font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    transition: all 0.2s ease;
 }
 
-button.check {
-    background-color: #4CAF50;
+.close-btn:hover {
+    background-color: #CC0000;
+    transform: scale(1.1);
+}
+
+.close-btn:active {
+    transform: scale(0.95);
+}
+
+/* Content area */
+.form-content {
+    margin-top: 10px;
+}
+
+/* Header section */
+.header-section {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+    gap: 15px;
+}
+
+.logo-img {
+    width: 50px;
+    height: auto;
+    flex-shrink: 0;
+}
+
+.app-title {
+    color: #0066CC;
+    font-size: 22px;
+    font-weight: bold;
+    margin: 0;
+}
+
+/* Input section */
+.input-section {
+    margin-bottom: 20px;
+}
+
+.input-group {
+    margin-bottom: 18px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: bold;
+    color: #333;
+    font-size: 14px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: #0066CC;
+}
+
+/* Button group */
+.button-group {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin-top: 25px;
+}
+
+.btn-check,
+.btn-clear {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-check {
+    background-color: #28a745;
     color: white;
 }
 
-button.clear {
-    background-color: #f44336;
+.btn-check:hover {
+    background-color: #218838;
+}
+
+.btn-clear {
+    background-color: #dc3545;
     color: white;
 }
 
-button.close {
-    background-color: #555;
-    color: white;
+.btn-clear:hover {
+    background-color: #c82333;
 }
 
-.message {
+/* Message area */
+.message-area {
     margin-top: 20px;
-    padding: 10px;
-    border-radius: 4px;
+    padding: 12px;
+    border-radius: 6px;
+    text-align: center;
+    font-weight: bold;
     display: none;
 }
 
-.message.success {
-    background-color: #dff0d8;
-    color: #3c763d;
-    border: 1px solid #d6e9c6;
+.message-area.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 2px solid #c3e6cb;
 }
 
-.message.error {
-    background-color: #f2dede;
-    color: #a94442;
-    border: 1px solid #ebccd1;
+.message-area.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 2px solid #f5c6cb;
+}
+
+/* Responsive design */
+@media (max-width: 480px) {
+    .form-container {
+        margin: 10px;
+        padding: 20px;
+    }
+
+    .button-group {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .btn-check,
+    .btn-clear {
+        width: 200px;
+    }
 }
